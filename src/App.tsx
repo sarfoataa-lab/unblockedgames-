@@ -8,6 +8,7 @@ import { GameCard } from './components/GameCard';
 import { GamePlayer } from './components/GamePlayer';
 import { WebSection } from './components/WebSection';
 import { Footer } from './components/Footer';
+import { GalaxyBackground } from './components/GalaxyBackground';
 import { sound } from './utils/audio';
 import {
   Gamepad2,
@@ -33,6 +34,17 @@ export default function App() {
   const [favorites, setFavorites] = useState<string[]>([]);
   const [activeModal, setActiveModal] = useState<ModalType>(null);
   const [soundEnabled, setSoundEnabled] = useState(sound.enabled);
+
+  // Dismiss initial HTML loading screen as soon as App component renders
+  useEffect(() => {
+    if (typeof window !== 'undefined' && typeof (window as unknown as { dismissLoadingScreen?: () => void }).dismissLoadingScreen === 'function') {
+      try {
+        (window as unknown as { dismissLoadingScreen: () => void }).dismissLoadingScreen();
+      } catch (e) {
+        console.warn('Error calling dismissLoadingScreen from App:', e);
+      }
+    }
+  }, []);
 
   // Load favorites from localStorage
   useEffect(() => {
@@ -146,7 +158,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070913] text-slate-100 flex flex-col font-sans selection:bg-cyan-500 selection:text-slate-950">
+    <div className="relative min-h-screen bg-transparent text-slate-100 flex flex-col font-sans selection:bg-cyan-500 selection:text-slate-950">
+      {/* Animated Galaxy Background with stars, nebula clouds, and space lighting */}
+      <GalaxyBackground />
+
       {/* Top Navigation */}
       <Navbar
         activeUrl={activeSiteUrl}
@@ -168,7 +183,7 @@ export default function App() {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 w-full">
+      <main className="flex-1 w-full relative z-10">
         {currentSection === 'portal' ? (
           /* Web Portal & Search View */
           <WebSection
@@ -196,30 +211,33 @@ export default function App() {
         ) : (
           /* Homepage View */
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
-            {/* Hero Section */}
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0c1424] via-[#090e1c] to-[#070a14] border border-slate-800/80 p-6 sm:p-10 shadow-2xl">
-              {/* Background ambient accents */}
-              <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
-              <div className="absolute bottom-0 left-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none -ml-20 -mb-20" />
+            {/* Hero Section with Galaxy Glass & Space Lighting */}
+            <div className="relative overflow-hidden rounded-3xl galaxy-glass border border-indigo-500/25 p-6 sm:p-10 shadow-[0_16px_50px_rgba(0,0,0,0.6)]">
+              {/* Background ambient cosmic accents */}
+              <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/15 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20 animate-nebula-slow" />
+              <div className="absolute bottom-0 left-0 w-80 h-80 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none -ml-20 -mb-20 animate-nebula-reverse" />
 
               <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
                 {/* Left Text */}
                 <div className="text-center lg:text-left max-w-2xl">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-gaming font-semibold mb-4">
-                    <Sparkles className="w-3.5 h-3.5" />
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-950/70 border border-indigo-500/30 text-cyan-300 text-xs font-gaming font-semibold mb-4 shadow-[0_0_12px_rgba(6,182,212,0.25)]">
+                    <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
                     FAST & LIGHTWEIGHT UNBLOCKED GAMING HUB
                   </div>
 
-                  <h1 className="font-gaming text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-                    Akwasi <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Unblocked Games</span>
+                  <h1 className="font-gaming text-3xl sm:text-5xl font-extrabold text-white tracking-wide leading-tight drop-shadow-[0_0_25px_rgba(99,102,241,0.3)]">
+                    Akwasi{' '}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400 drop-shadow-[0_0_20px_rgba(6,182,212,0.4)]">
+                      Unblocked Games
+                    </span>
                   </h1>
 
-                  <p className="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
+                  <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed max-w-xl font-sans">
                     Play the best retro, arcade, and puzzle games unblocked directly in your browser. No downloads, no plugins, zero lag.
                   </p>
 
-                  {/* Feature Pills & Web CTA */}
-                  <div className="mt-5 flex flex-wrap justify-center lg:justify-start gap-2 text-xs">
+                  {/* Feature Pills & Web CTA with subtle hover animations */}
+                  <div className="mt-5 flex flex-wrap justify-center lg:justify-start gap-2.5 text-xs">
                     <button
                       type="button"
                       onClick={() => {
@@ -227,18 +245,18 @@ export default function App() {
                         setCurrentSection('portal');
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
-                      className="px-3 py-1.5 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-gaming font-bold flex items-center gap-1.5 transition-all shadow-md"
+                      className="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-gaming font-bold flex items-center gap-2 transition-all duration-200 shadow-[0_0_18px_rgba(6,182,212,0.4)] hover:shadow-[0_0_25px_rgba(6,182,212,0.6)] hover:scale-105 active:scale-95"
                     >
                       <Globe className="w-3.5 h-3.5 stroke-[2.5]" />
                       <span>RETURN TO WEB PORTAL</span>
                     </button>
-                    <span className="px-2.5 py-1 rounded-lg bg-slate-900/90 border border-slate-800 text-slate-300">
+                    <span className="px-3 py-2 rounded-xl bg-white/[0.04] backdrop-blur-md border border-indigo-500/20 text-slate-200 hover:border-cyan-400/40 hover:scale-105 transition-all duration-200">
                       ⚡ 100% Free
                     </span>
-                    <span className="px-2.5 py-1 rounded-lg bg-slate-900/90 border border-slate-800 text-slate-300">
+                    <span className="px-3 py-2 rounded-xl bg-white/[0.04] backdrop-blur-md border border-indigo-500/20 text-slate-200 hover:border-cyan-400/40 hover:scale-105 transition-all duration-200">
                       🕹️ Native HTML5 Engines
                     </span>
-                    <span className="px-2.5 py-1 rounded-lg bg-slate-900/90 border border-slate-800 text-slate-300">
+                    <span className="px-3 py-2 rounded-xl bg-white/[0.04] backdrop-blur-md border border-indigo-500/20 text-slate-200 hover:border-cyan-400/40 hover:scale-105 transition-all duration-200">
                       📱 Mobile & PC Ready
                     </span>
                   </div>
@@ -246,18 +264,18 @@ export default function App() {
 
                 {/* Right Featured Game Card */}
                 {featuredGame && (
-                  <div className="w-full sm:w-80 shrink-0 bg-[#0f1526]/90 border border-slate-800 rounded-2xl p-4 shadow-xl flex flex-col justify-between">
+                  <div className="w-full sm:w-80 shrink-0 galaxy-glass border border-indigo-500/30 rounded-2xl p-4 shadow-[0_12px_40px_rgba(0,0,0,0.5)] flex flex-col justify-between">
                     <div className="flex items-center justify-between mb-2.5">
-                      <span className="text-[11px] font-bold font-gaming text-emerald-400 flex items-center gap-1">
+                      <span className="text-[11px] font-bold font-gaming text-cyan-300 flex items-center gap-1 drop-shadow-[0_0_8px_rgba(6,182,212,0.4)]">
                         <Flame className="w-3.5 h-3.5 text-orange-400" />
                         FEATURED GAME
                       </span>
-                      <span className="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono">
+                      <span className="text-[10px] bg-indigo-950/80 text-slate-300 border border-indigo-500/30 px-2 py-0.5 rounded font-mono">
                         {(featuredGame.plays / 1000).toFixed(1)}k plays
                       </span>
                     </div>
 
-                    <div className="aspect-[16/10] rounded-xl overflow-hidden mb-3 border border-slate-800">
+                    <div className="aspect-[16/10] rounded-xl overflow-hidden mb-3 border border-indigo-500/25">
                       <GameCard
                         game={featuredGame}
                         isFavorite={favorites.includes(featuredGame.id)}
@@ -303,40 +321,24 @@ export default function App() {
                 </div>
 
                 <div className="flex items-center gap-1.5 text-xs">
-                  <span className="text-slate-500 hidden sm:inline mr-1">Sort by:</span>
-                  <button
-                    type="button"
-                    onClick={() => { sound.playClick(); setSortFilter('featured'); }}
-                    className={`px-2.5 py-1 rounded-lg font-medium transition-colors ${
-                      sortFilter === 'featured'
-                        ? 'bg-slate-800 text-emerald-400 border border-emerald-500/40'
-                        : 'text-slate-400 hover:text-white'
-                    }`}
-                  >
-                    Featured
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => { sound.playClick(); setSortFilter('popular'); }}
-                    className={`px-2.5 py-1 rounded-lg font-medium transition-colors ${
-                      sortFilter === 'popular'
-                        ? 'bg-slate-800 text-emerald-400 border border-emerald-500/40'
-                        : 'text-slate-400 hover:text-white'
-                    }`}
-                  >
-                    Popular
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => { sound.playClick(); setSortFilter('rating'); }}
-                    className={`px-2.5 py-1 rounded-lg font-medium transition-colors ${
-                      sortFilter === 'rating'
-                        ? 'bg-slate-800 text-emerald-400 border border-emerald-500/40'
-                        : 'text-slate-400 hover:text-white'
-                    }`}
-                  >
-                    Rating
-                  </button>
+                  <span className="text-slate-400 hidden sm:inline mr-1 font-gaming">Sort by:</span>
+                  {(['featured', 'popular', 'rating'] as const).map((filter) => {
+                    const isActive = sortFilter === filter;
+                    return (
+                      <button
+                        key={filter}
+                        type="button"
+                        onClick={() => { sound.playClick(); setSortFilter(filter); }}
+                        className={`px-3 py-1 rounded-lg font-gaming text-xs capitalize transition-all duration-200 hover:scale-105 active:scale-95 ${
+                          isActive
+                            ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold shadow-[0_0_12px_rgba(6,182,212,0.4)] border border-cyan-400/50'
+                            : 'bg-white/[0.04] text-slate-300 hover:text-white border border-indigo-500/20 hover:border-cyan-400/40'
+                        }`}
+                      >
+                        {filter}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             </div>

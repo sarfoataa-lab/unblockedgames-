@@ -31,6 +31,17 @@ import { WebTab, QuickAccessSite } from '../types';
 import { QUICK_ACCESS_SITES, SEARCH_ENGINES, NAV_MENU_ITEMS } from '../data/quickWebSites';
 import { sound } from '../utils/audio';
 import {
+  YouTubeLogo,
+  TikTokLogo,
+  SnapchatLogo,
+  DiscordLogo,
+  RobloxLogo,
+  GoogleLogo,
+  RedditLogo,
+  TwitchLogo,
+  GitHubLogo
+} from './BrandLogos';
+import {
   resolveWebTarget,
   launchWebDestination,
   getSavedBookmarks,
@@ -266,25 +277,25 @@ export const WebSection: React.FC<WebSectionProps> = ({
   const getSiteIcon = (key: string) => {
     switch (key) {
       case 'google':
-        return <Search className="w-5 h-5 text-[#4285F4]" />;
+        return <GoogleLogo className="w-5 h-5" />;
       case 'youtube':
-        return <Youtube className="w-5 h-5 text-[#FF0000]" />;
+        return <YouTubeLogo className="w-5 h-5" />;
       case 'tiktok':
-        return <Video className="w-5 h-5 text-[#00F2FE]" />;
+        return <TikTokLogo className="w-5 h-5" />;
       case 'snapchat':
-        return <Ghost className="w-5 h-5 text-[#FFFC00]" />;
+        return <SnapchatLogo className="w-5 h-5" />;
       case 'discord':
-        return <MessageSquare className="w-5 h-5 text-[#5865F2]" />;
+        return <DiscordLogo className="w-5 h-5" />;
       case 'roblox':
-        return <Boxes className="w-5 h-5 text-[#E2231A]" />;
+        return <RobloxLogo className="w-5 h-5" fill="#FFFFFF" />;
       case 'reddit':
-        return <MessageSquare className="w-5 h-5 text-[#FF4500]" />;
+        return <RedditLogo className="w-5 h-5" />;
       case 'wikipedia':
         return <BookOpen className="w-5 h-5 text-slate-200" />;
       case 'twitch':
-        return <Radio className="w-5 h-5 text-[#9146FF]" />;
+        return <TwitchLogo className="w-5 h-5" />;
       case 'github':
-        return <Code className="w-5 h-5 text-[#10B981]" />;
+        return <GitHubLogo className="w-5 h-5" />;
       default:
         return <Globe className="w-5 h-5 text-cyan-400" />;
     }
@@ -297,10 +308,10 @@ export const WebSection: React.FC<WebSectionProps> = ({
 
   return (
     <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 space-y-6">
-      {/* Top Banner / Browser Window Frame */}
-      <div className="bg-[#090d18] border border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col">
+      {/* Top Banner / Browser Window Frame with Galaxy Glass Effect */}
+      <div className="galaxy-glass rounded-2xl shadow-[0_16px_50px_rgba(0,0,0,0.6)] overflow-hidden flex flex-col border border-indigo-500/20">
         {/* 1. Browser Tabs Bar */}
-        <div className="bg-[#070b14] border-b border-slate-800/80 px-2 pt-2 flex items-center gap-1 overflow-x-auto scrollbar-none">
+        <div className="bg-[#050917]/90 border-b border-indigo-500/20 px-2 pt-2 flex items-center gap-1 overflow-x-auto scrollbar-none">
           {tabs.map((tab) => {
             const isActive = tab.id === activeTabId;
             return (
@@ -311,14 +322,14 @@ export const WebSection: React.FC<WebSectionProps> = ({
                   setActiveTabId(tab.id);
                   setUrlInput(tab.url);
                 }}
-                className={`group relative flex items-center gap-2 px-3.5 py-2 rounded-t-xl text-xs font-medium cursor-pointer transition-all border-t border-x select-none max-w-[220px] min-w-[130px] ${
+                className={`group relative flex items-center gap-2 px-3.5 py-2 rounded-t-xl text-xs font-medium cursor-pointer transition-all duration-200 border-t border-x select-none max-w-[220px] min-w-[130px] ${
                   isActive
-                    ? 'bg-[#0f1526] text-white border-slate-700/80 shadow-md font-semibold'
-                    : 'bg-[#0a0f1c]/60 text-slate-400 hover:bg-[#0c1222] hover:text-slate-200 border-transparent'
+                    ? 'bg-[#0b1226]/90 text-white border-indigo-400/40 shadow-[0_-2px_10px_rgba(6,182,212,0.15)] font-semibold'
+                    : 'bg-white/[0.02] text-slate-400 hover:bg-white/[0.06] hover:text-slate-200 border-transparent'
                 }`}
               >
                 {isActive && (
-                  <span className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-cyan-400 to-blue-500" />
+                  <span className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-cyan-400 via-indigo-500 to-purple-500 shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
                 )}
 
                 <Globe className={`w-3.5 h-3.5 shrink-0 ${isActive ? 'text-cyan-400' : 'text-slate-500'}`} />
@@ -584,36 +595,36 @@ export const WebSection: React.FC<WebSectionProps> = ({
                   {filteredSites.map((site) => (
                     <div
                       key={site.id}
-                      className="group bg-[#0d1322] border border-slate-800 hover:border-slate-700 hover:bg-[#10182b] rounded-2xl p-4 transition-all duration-200 shadow-md flex flex-col justify-between"
+                      className="group galaxy-glass galaxy-glass-hover rounded-2xl p-4.5 transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.35)] flex flex-col justify-between hover:border-cyan-400/50 hover:shadow-[0_0_24px_rgba(6,182,212,0.22)]"
                     >
                       <div>
-                        <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center justify-between mb-3.5">
                           <div
-                            className="w-10 h-10 rounded-xl flex items-center justify-center shadow-inner"
+                            className="w-11 h-11 rounded-xl flex items-center justify-center shadow-inner transition-transform duration-300 group-hover:scale-110 group-hover:rotate-1"
                             style={{ backgroundColor: `${site.accentColor}18`, border: `1px solid ${site.accentColor}40` }}
                           >
                             {getSiteIcon(site.iconKey)}
                           </div>
-                          <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-slate-800/90 text-slate-400 border border-slate-700/60">
+                          <span className="text-[10px] uppercase font-gaming font-semibold tracking-wider px-2 py-0.5 rounded-full bg-indigo-950/70 text-cyan-300 border border-indigo-500/30 shadow-[0_0_8px_rgba(99,102,241,0.2)]">
                             {site.category}
                           </span>
                         </div>
 
-                        <h3 className="font-gaming text-base font-bold text-white group-hover:text-cyan-400 transition-colors flex items-center justify-between">
+                        <h3 className="font-gaming text-base font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center justify-between">
                           <span>{site.name}</span>
-                          <span className="text-[11px] font-mono font-normal text-slate-500">{site.domain}</span>
+                          <span className="text-[11px] font-mono font-normal text-slate-400">{site.domain}</span>
                         </h3>
-                        <p className="text-xs text-slate-400 mt-1 leading-relaxed line-clamp-2">
+                        <p className="text-xs text-slate-300/90 mt-1.5 leading-relaxed line-clamp-2 font-sans">
                           {site.description}
                         </p>
                       </div>
 
                       {/* Card Action Controls */}
-                      <div className="mt-4 pt-3 border-t border-slate-800/70 flex items-center gap-2">
+                      <div className="mt-4 pt-3 border-t border-indigo-500/20 flex items-center gap-2">
                         <button
                           type="button"
                           onClick={() => handleQuickSiteClick(site, false)}
-                          className="flex-1 py-1.5 px-3 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white rounded-lg text-xs font-gaming font-semibold transition-colors text-center"
+                          className="flex-1 py-2 px-3 bg-white/[0.04] hover:bg-white/[0.09] text-slate-200 hover:text-white rounded-lg text-xs font-gaming font-semibold border border-white/10 hover:border-indigo-400/40 hover:shadow-[0_0_12px_rgba(99,102,241,0.25)] transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] text-center"
                           title={`Open ${site.name} in tab`}
                         >
                           Open in Tab
@@ -621,7 +632,7 @@ export const WebSection: React.FC<WebSectionProps> = ({
                         <button
                           type="button"
                           onClick={() => handleQuickSiteClick(site, true)}
-                          className="flex items-center gap-1 py-1.5 px-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 rounded-lg text-xs font-gaming font-bold transition-all shadow-sm"
+                          className="flex items-center justify-center gap-1.5 py-2 px-3.5 bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white rounded-lg text-xs font-gaming font-bold transition-all duration-200 shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:shadow-[0_0_24px_rgba(6,182,212,0.5)] hover:scale-[1.02] active:scale-[0.98]"
                           title={`Launch ${site.name} directly in new window`}
                         >
                           <ExternalLink className="w-3.5 h-3.5" />

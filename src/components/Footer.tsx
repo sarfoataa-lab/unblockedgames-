@@ -33,51 +33,51 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer className="mt-16 border-t border-slate-800/80 bg-[#070b14] text-slate-400">
+    <footer className="mt-16 border-t border-indigo-500/20 bg-[#050817]/90 backdrop-blur-md text-slate-400 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Brand & Description */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
-            <div className="flex items-center gap-2 mb-1.5">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-emerald-500 to-cyan-500 flex items-center justify-center text-slate-950 font-bold">
-                <Gamepad2 className="w-5 h-5" />
+            <div className="flex items-center gap-2.5 mb-1.5">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold shadow-[0_0_12px_rgba(6,182,212,0.4)]">
+                <Gamepad2 className="w-5 h-5 text-white" />
               </div>
               <span className="font-gaming text-base font-bold text-white tracking-wide">
                 Akwasi Unblocked Games
               </span>
             </div>
-            <p className="text-xs text-slate-500 max-w-sm">
+            <p className="text-xs text-slate-400 max-w-sm font-sans">
               Lightweight, fast-loading, zero-distraction HTML5 gaming portal. Play anywhere, anytime.
             </p>
           </div>
 
           {/* Links: About, Contact, Privacy, Terms */}
-          <div className="flex flex-wrap justify-center gap-6 text-xs font-semibold">
+          <div className="flex flex-wrap justify-center gap-6 text-xs font-gaming font-semibold">
             <button
               type="button"
               onClick={() => { sound.playClick(); onOpenModal('about'); }}
-              className="hover:text-emerald-400 transition-colors"
+              className="hover:text-cyan-400 transition-all duration-200 hover:scale-105"
             >
               About
             </button>
             <button
               type="button"
               onClick={() => { sound.playClick(); onOpenModal('contact'); }}
-              className="hover:text-emerald-400 transition-colors"
+              className="hover:text-cyan-400 transition-all duration-200 hover:scale-105"
             >
               Contact
             </button>
             <button
               type="button"
               onClick={() => { sound.playClick(); onOpenModal('privacy'); }}
-              className="hover:text-emerald-400 transition-colors"
+              className="hover:text-cyan-400 transition-all duration-200 hover:scale-105"
             >
               Privacy Policy
             </button>
             <button
               type="button"
               onClick={() => { sound.playClick(); onOpenModal('terms'); }}
-              className="hover:text-emerald-400 transition-colors"
+              className="hover:text-cyan-400 transition-all duration-200 hover:scale-105"
             >
               Terms of Service
             </button>
@@ -85,7 +85,7 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         {/* Copyright & Tagline */}
-        <div className="mt-8 pt-6 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-3">
+        <div className="mt-8 pt-6 border-t border-indigo-500/20 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-400 gap-3 font-sans">
           <p>© {new Date().getFullYear()} Akwasi Unblocked Games. All rights reserved.</p>
           <p className="flex items-center gap-1">
             Built with <Heart className="w-3.5 h-3.5 text-rose-500 fill-current inline" /> for gamers everywhere
@@ -96,11 +96,11 @@ export const Footer: React.FC<FooterProps> = ({
       {/* Modal Dialog */}
       {activeModal && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xs"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm"
           onClick={onCloseModal}
         >
           <div
-            className="relative w-full max-w-lg bg-[#0f1422] border border-slate-800 rounded-2xl p-6 shadow-2xl overflow-y-auto max-h-[90vh]"
+            className="relative w-full max-w-lg galaxy-glass border border-indigo-500/30 rounded-2xl p-6 shadow-[0_16px_50px_rgba(0,0,0,0.8)] overflow-y-auto max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}

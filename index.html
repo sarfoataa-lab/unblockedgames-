@@ -14,7 +14,7 @@
     <link rel="shortcut icon" href="./favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700;800&family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
       @keyframes spinLoader {
         to { transform: rotate(360deg); }
@@ -26,6 +26,21 @@
         border-top-color: #06b6d4;
         border-radius: 50%;
         animation: spinLoader 0.9s linear infinite;
+      }
+      #loading-screen {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #090d16;
+        color: #94a3b8;
+        font-family: system-ui, -apple-system, sans-serif;
+        text-align: center;
+        padding: 24px;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
       }
     </style>
     <script>
@@ -45,21 +60,60 @@
           return true;
         }
       }, true);
+
+      // Dismiss loading screen function
+      function dismissLoadingScreen() {
+        try {
+          var loader = document.getElementById('loading-screen');
+          if (loader && !loader.dataset.dismissed) {
+            loader.dataset.dismissed = 'true';
+            loader.style.opacity = '0';
+            loader.style.pointerEvents = 'none';
+            setTimeout(function() {
+              if (loader && loader.parentNode) {
+                loader.parentNode.removeChild(loader);
+              }
+            }, 300);
+          }
+        } catch (err) {
+          console.warn('Error dismissing loading screen:', err);
+        }
+      }
+      window.dismissLoadingScreen = dismissLoadingScreen;
+
+      // Automatically dismiss on DOMContentLoaded or window load
+      if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        setTimeout(dismissLoadingScreen, 100);
+      } else {
+        document.addEventListener('DOMContentLoaded', function() {
+          setTimeout(dismissLoadingScreen, 100);
+        });
+        window.addEventListener('load', function() {
+          dismissLoadingScreen();
+        });
+      }
+
+      // Maximum loading timeout: ensure site can NEVER stay stuck on loading screen forever
+      var MAX_LOADING_TIMEOUT_MS = 1500;
+      setTimeout(function() {
+        dismissLoadingScreen();
+      }, MAX_LOADING_TIMEOUT_MS);
     </script>
   </head>
   <body class="bg-[#090d16] text-slate-100 min-h-screen selection:bg-emerald-500 selection:text-black">
-    <div id="root">
-      <div style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: #090d16; color: #94a3b8; font-family: system-ui, -apple-system, sans-serif; text-align: center; padding: 24px;">
-        <div class="initial-spinner" style="margin-bottom: 20px;"></div>
-        <h1 style="color: #f8fafc; font-size: 22px; font-weight: 700; margin: 0 0 8px 0; letter-spacing: 0.5px;">Akwasi Unblocked Games</h1>
-        <p style="font-size: 14px; margin: 0; color: #64748b;">Loading portal & games engine...</p>
-        <noscript>
-          <div style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 8px; padding: 12px 16px; margin-top: 20px; max-width: 380px;">
-            <p style="color: #fca5a5; font-size: 13px; margin: 0;">JavaScript is required to run Akwasi Unblocked Games. Please enable JavaScript in your browser settings.</p>
-          </div>
-        </noscript>
-      </div>
+    <!-- Initial Loading Screen with Auto-Dismiss & Max Timeout -->
+    <div id="loading-screen">
+      <div class="initial-spinner" style="margin-bottom: 20px;"></div>
+      <h1 style="color: #f8fafc; font-size: 22px; font-weight: 700; margin: 0 0 8px 0; letter-spacing: 0.5px;">Akwasi Unblocked Games</h1>
+      <p style="font-size: 14px; margin: 0; color: #64748b;">Loading portal & games engine...</p>
+      <noscript>
+        <div style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 8px; padding: 12px 16px; margin-top: 20px; max-width: 380px;">
+          <p style="color: #fca5a5; font-size: 13px; margin: 0;">JavaScript is required to run Akwasi Unblocked Games. Please enable JavaScript in your browser settings.</p>
+        </div>
+      </noscript>
     </div>
+
+    <div id="root"></div>
     <script type="module" src="./src/main.tsx"></script>
   </body>
 </html>

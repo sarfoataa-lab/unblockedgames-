@@ -49,10 +49,10 @@ export const CategoryBar: React.FC<CategoryBarProps> = ({
               key={cat.id}
               type="button"
               onClick={() => onSelectCategory(cat.id)}
-              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all border whitespace-nowrap ${
+              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-gaming font-semibold transition-all duration-200 border whitespace-nowrap hover:scale-105 active:scale-95 ${
                 isActive
-                  ? 'bg-emerald-500 text-slate-950 border-emerald-400 font-bold shadow-[0_0_15px_rgba(16,185,129,0.35)]'
-                  : 'bg-slate-900/80 text-slate-300 hover:text-white border-slate-800 hover:border-slate-700 hover:bg-slate-850'
+                  ? 'bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 text-white border-cyan-400/70 font-bold shadow-[0_0_20px_rgba(6,182,212,0.45)]'
+                  : 'bg-white/[0.04] backdrop-blur-md text-slate-300 hover:text-white border-indigo-500/20 hover:border-cyan-400/40 hover:bg-white/[0.08] hover:shadow-[0_0_12px_rgba(6,182,212,0.2)]'
               }`}
             >
               <span className={isActive ? 'text-slate-950' : ''}>
