@@ -214,3 +214,200 @@ export const GitHubLogo: React.FC<LogoProps> = ({ className = 'w-4 h-4', size })
     />
   </svg>
 );
+
+/**
+ * Official Poki Logo: Iconic mint/cyan rounded badge with white bold typography.
+ */
+export const PokiLogo: React.FC<LogoProps> = ({ className = 'w-4 h-4', size }) => (
+  <svg
+    viewBox="0 0 48 48"
+    width={size}
+    height={size}
+    className={`${className} shrink-0 transition-transform duration-200 group-hover:scale-110`}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-label="Poki"
+  >
+    <rect width="48" height="48" rx="12" fill="#00D2B4" />
+    <circle cx="14" cy="22" r="5" fill="#FFFFFF" />
+    <path
+      d="M14 17v18M21 21a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm9-4v18m0-10l5-4m-5 4l5 6m4-9v9"
+      stroke="#FFFFFF"
+      strokeWidth="3.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+/**
+ * Official Soccer Bros Logo: Green soccer pitch theme with classic soccer ball and golden star.
+ */
+export const SoccerBrosLogo: React.FC<LogoProps> = ({ className = 'w-4 h-4', size }) => (
+  <svg
+    viewBox="0 0 48 48"
+    width={size}
+    height={size}
+    className={`${className} shrink-0 transition-transform duration-200 group-hover:scale-110`}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-label="Soccer Bros"
+  >
+    <rect width="48" height="48" rx="12" fill="#059669" />
+    <circle cx="24" cy="24" r="14" fill="#FFFFFF" stroke="#10B981" strokeWidth="1.5" />
+    <polygon points="24,18 29,22 27,27 21,27 19,22" fill="#0F172A" />
+    <line x1="24" y1="18" x2="24" y2="10" stroke="#0F172A" strokeWidth="2" strokeLinecap="round" />
+    <line x1="29" y1="22" x2="36" y2="19" stroke="#0F172A" strokeWidth="2" strokeLinecap="round" />
+    <line x1="27" y1="27" x2="33" y2="34" stroke="#0F172A" strokeWidth="2" strokeLinecap="round" />
+    <line x1="21" y1="27" x2="15" y2="34" stroke="#0F172A" strokeWidth="2" strokeLinecap="round" />
+    <line x1="19" y1="22" x2="12" y2="19" stroke="#0F172A" strokeWidth="2" strokeLinecap="round" />
+    <circle cx="36" cy="12" r="6" fill="#FACC15" />
+    <path d="M36 8.5l1.1 2.2 2.4.4-1.7 1.7.4 2.4-2.2-1.2-2.2 1.2.4-2.4-1.7-1.7 2.4-.4z" fill="#78350F" />
+  </svg>
+);
+
+/**
+ * Official Football Bros Logo: American football with laces and field goal / flame accents.
+ */
+export const FootballBrosLogo: React.FC<LogoProps> = ({ className = 'w-4 h-4', size }) => (
+  <svg
+    viewBox="0 0 48 48"
+    width={size}
+    height={size}
+    className={`${className} shrink-0 transition-transform duration-200 group-hover:scale-110`}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-label="Football Bros"
+  >
+    <rect width="48" height="48" rx="12" fill="#EA580C" />
+    <g transform="rotate(-30 24 24)">
+      <path
+        d="M24 10C34 10 40 18 40 24s-6 14-16 14S8 30 8 24s6-14 16-14z"
+        fill="#7C2D12"
+        stroke="#FED7AA"
+        strokeWidth="1.5"
+      />
+      <path d="M14 14c-2 3-2 17 0 20" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" />
+      <path d="M34 14c2 3 2 17 0 20" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" />
+      <line x1="18" y1="24" x2="30" y2="24" stroke="#FFFFFF" strokeWidth="2.2" strokeLinecap="round" />
+      <line x1="21" y1="21" x2="21" y2="27" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round" />
+      <line x1="24" y1="21" x2="24" y2="27" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round" />
+      <line x1="27" y1="21" x2="27" y2="27" stroke="#FFFFFF" strokeWidth="1.8" strokeLinecap="round" />
+    </g>
+  </svg>
+);
+
+/**
+ * Official Wrestle Bros Logo: Championship gold belt / wrestling ring ropes with crimson & gold banner.
+ */
+export const WrestleBrosLogo: React.FC<LogoProps> = ({ className = 'w-4 h-4', size }) => (
+  <svg
+    viewBox="0 0 48 48"
+    width={size}
+    height={size}
+    className={`${className} shrink-0 transition-transform duration-200 group-hover:scale-110`}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-label="Wrestle Bros"
+  >
+    <rect width="48" height="48" rx="12" fill="#DC2626" />
+    <rect x="6" y="19" width="36" height="10" rx="3" fill="#18181B" />
+    <path
+      d="M17 15h14l3 9-3 9H17l-3-9 3-9z"
+      fill="#EAB308"
+      stroke="#CA8A04"
+      strokeWidth="1.5"
+    />
+    <circle cx="24" cy="24" r="5" fill="#FEF08A" />
+    <path
+      d="M21 26l1.5-4 1.5 2 1.5-2 1.5 4H21z"
+      fill="#991B1B"
+    />
+    <circle cx="11" cy="24" r="2" fill="#CA8A04" />
+    <circle cx="37" cy="24" r="2" fill="#CA8A04" />
+  </svg>
+);
+
+/**
+ * Official 2v2.io Logo: Electric neon cyan & purple dual battle swords / shield arena badge.
+ */
+export const TwoVTwoLogo: React.FC<LogoProps> = ({ className = 'w-4 h-4', size }) => (
+  <svg
+    viewBox="0 0 48 48"
+    width={size}
+    height={size}
+    className={`${className} shrink-0 transition-transform duration-200 group-hover:scale-110`}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-label="2v2.io"
+  >
+    <rect width="48" height="48" rx="12" fill="#4F46E5" />
+    <path d="M12 12l24 24M36 12L12 36" stroke="#06B6D4" strokeWidth="4" strokeLinecap="round" opacity="0.3" />
+    <path
+      d="M24 10l12 5v9c0 8-6 13-12 15-6-2-12-7-12-15v-9l12-5z"
+      fill="#1E1B4B"
+      stroke="#06B6D4"
+      strokeWidth="2"
+    />
+    <text
+      x="24"
+      y="27"
+      textAnchor="middle"
+      fill="#F8FAFC"
+      fontSize="11"
+      fontWeight="900"
+      fontFamily="system-ui, sans-serif"
+      letterSpacing="-0.5"
+    >
+      2V2
+    </text>
+    <text
+      x="24"
+      y="33"
+      textAnchor="middle"
+      fill="#A5B4FC"
+      fontSize="7"
+      fontWeight="700"
+      fontFamily="system-ui, sans-serif"
+    >
+      .IO
+    </text>
+  </svg>
+);
+
+/**
+ * Official OZ Games Logo: Stylized neon green & yellow crown/arcade badge.
+ */
+export const OzGamesLogo: React.FC<LogoProps> = ({ className = 'w-4 h-4', size }) => (
+  <svg
+    viewBox="0 0 48 48"
+    width={size}
+    height={size}
+    className={`${className} shrink-0 transition-transform duration-200 group-hover:scale-110`}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-label="OZ Games"
+  >
+    <rect width="48" height="48" rx="12" fill="#047857" />
+    <path
+      d="M13 20l4-7 7 5 7-5 4 7-2 15H15L13 20z"
+      fill="#F59E0B"
+      stroke="#FDE68A"
+      strokeWidth="1.5"
+    />
+    <circle cx="24" cy="18" r="3" fill="#10B981" />
+    <text
+      x="24"
+      y="31"
+      textAnchor="middle"
+      fill="#FFFFFF"
+      fontSize="12"
+      fontWeight="900"
+      fontFamily="system-ui, sans-serif"
+      letterSpacing="0.5"
+    >
+      OZ
+    </text>
+  </svg>
+);
+

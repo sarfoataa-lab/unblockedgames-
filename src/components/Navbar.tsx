@@ -2,6 +2,8 @@ import React from 'react';
 import {
   Globe,
   Home,
+  Gamepad2,
+  Shield,
   Volume2,
   VolumeX,
 } from 'lucide-react';
@@ -28,6 +30,9 @@ interface NavbarProps {
   onSelectSite: (url: string, name: string) => void;
   activeUrl?: string;
   onGoHome: () => void;
+  onOpenGaming?: () => void;
+  onOpenUnblocker?: () => void;
+  activeSection?: string;
   soundEnabled: boolean;
   onToggleSound: () => void;
 }
@@ -81,6 +86,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   onSelectSite,
   activeUrl = '',
   onGoHome,
+  onOpenGaming,
+  onOpenUnblocker,
+  activeSection,
   soundEnabled,
   onToggleSound
 }) => {
@@ -112,14 +120,14 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </button>
 
-        {/* Popular Websites Navigation Menu with Official Logos */}
+        {/* Navigation Menu with Gaming, UNBLOCKER, and Popular Websites */}
         <nav className="flex items-center gap-1 sm:gap-1.5 overflow-x-auto py-1 px-1.5 bg-[#080d20]/80 backdrop-blur-md rounded-xl border border-indigo-500/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] scrollbar-none max-w-full">
           {/* Home portal button */}
           <button
             type="button"
             onClick={onGoHome}
             className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-gaming font-semibold transition-all duration-200 shrink-0 hover:scale-105 active:scale-95 ${
-              !activeUrl
+              !activeUrl && activeSection === 'portal'
                 ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/50 shadow-[0_0_12px_rgba(6,182,212,0.3)]'
                 : 'text-slate-400 hover:text-white hover:bg-white/[0.07] border border-transparent'
             }`}
@@ -127,6 +135,45 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <Home className="w-3.5 h-3.5 text-cyan-400" />
             <span className="hidden md:inline">Home</span>
+          </button>
+
+          {/* Dedicated GAMING Section Button */}
+          <button
+            type="button"
+            onClick={() => {
+              sound.playClick();
+              if (onOpenGaming) onOpenGaming();
+            }}
+            className={`group flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-gaming font-bold transition-all duration-200 shrink-0 border hover:scale-105 active:scale-95 ${
+              activeSection === 'gaming'
+                ? 'bg-gradient-to-r from-cyan-500/30 to-blue-600/30 text-cyan-200 border-cyan-400/80 shadow-[0_0_16px_rgba(6,182,212,0.4)]'
+                : 'bg-cyan-500/10 text-cyan-300 hover:text-white hover:bg-cyan-500/20 border-cyan-500/30 hover:border-cyan-400/60 shadow-[0_0_8px_rgba(6,182,212,0.15)]'
+            }`}
+            title="Dedicated Gaming Hub: Poki, Soccer Bros, Football Bros, Wrestle Bros, 2v2.io, OZ Games"
+          >
+            <Gamepad2 className="w-3.5 h-3.5 text-cyan-400 transition-transform duration-200 group-hover:scale-110" />
+            <span>Gaming</span>
+            <span className="hidden lg:inline px-1 py-0.2 text-[9px] font-bold bg-cyan-400/20 text-cyan-300 rounded border border-cyan-400/30">
+              NEW
+            </span>
+          </button>
+
+          {/* Dedicated UNBLOCKER Section Button */}
+          <button
+            type="button"
+            onClick={() => {
+              sound.playClick();
+              if (onOpenUnblocker) onOpenUnblocker();
+            }}
+            className={`group flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-gaming font-bold transition-all duration-200 shrink-0 border hover:scale-105 active:scale-95 ${
+              activeSection === 'unblocker'
+                ? 'bg-gradient-to-r from-emerald-500/30 to-teal-600/30 text-emerald-200 border-emerald-400/80 shadow-[0_0_16px_rgba(16,185,129,0.4)]'
+                : 'bg-emerald-500/10 text-emerald-300 hover:text-white hover:bg-emerald-500/20 border-emerald-500/30 hover:border-emerald-400/60 shadow-[0_0_8px_rgba(16,185,129,0.15)]'
+            }`}
+            title="Proxy Unblocker & Tab Cloaker Suite"
+          >
+            <Shield className="w-3.5 h-3.5 text-emerald-400 transition-transform duration-200 group-hover:scale-110" />
+            <span>UNBLOCKER</span>
           </button>
 
           {/* 6 Popular Website Menu Items with Official Brand SVGs */}
