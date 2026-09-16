@@ -1,20 +1,20 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Akwasi Unblocked Games</title>
-    <meta name="description" content="Simple, fast, and dark web portal and games hub featuring quick access to YouTube, TikTok, Snapchat, Discord, Roblox, Google search, custom shortcuts, and games." />
+    <meta name="description" content="Akwasi Unblocked Games - Fast galaxy portal and web games hub featuring YouTube, TikTok, Snapchat, Discord, Roblox, Google, Poki, Soccer Bros, Football Bros, Wrestle Bros, 2v2.io, OZ Games, and UNBLOCKER search portal." />
     <meta property="og:title" content="Akwasi Unblocked Games" />
-    <meta property="og:description" content="Simple, fast, and dark web portal and games hub featuring quick access to YouTube, TikTok, Snapchat, Discord, Roblox, Google search, custom shortcuts, and games." />
+    <meta property="og:description" content="Akwasi Unblocked Games - Fast galaxy portal and web games hub featuring YouTube, TikTok, Snapchat, Discord, Roblox, Google, Poki, Soccer Bros, Football Bros, Wrestle Bros, 2v2.io, OZ Games, and UNBLOCKER search portal." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
-    <link rel="shortcut icon" href="./favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+    <link rel="shortcut icon" href="./assets/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700;800&family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css" />
     <style>
       @keyframes spinLoader {
         to { transform: rotate(360deg); }
@@ -35,86 +35,232 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background-color: #090d16;
+        background-color: #050814;
         color: #94a3b8;
-        font-family: system-ui, -apple-system, sans-serif;
+        font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
         text-align: center;
         padding: 24px;
         transition: opacity 0.3s ease, visibility 0.3s ease;
       }
     </style>
-    <script>
-      // Isolate any third-party browser extension errors (e.g. injected content.js or chrome-extension:// scripts)
-      window.addEventListener('error', function(e) {
-        var fn = (e && e.filename) || '';
-        var msg = (e && e.message) || '';
-        if (
-          fn.indexOf('chrome-extension://') !== -1 ||
-          fn.indexOf('moz-extension://') !== -1 ||
-          fn.indexOf('content.js') !== -1 ||
-          fn.indexOf('popup.js') !== -1 ||
-          (msg.indexOf('Cannot set properties of null') !== -1 && fn.indexOf('extension') !== -1)
-        ) {
-          e.preventDefault && e.preventDefault();
-          e.stopPropagation && e.stopPropagation();
-          return true;
-        }
-      }, true);
-
-      // Dismiss loading screen function
-      function dismissLoadingScreen() {
-        try {
-          var loader = document.getElementById('loading-screen');
-          if (loader && !loader.dataset.dismissed) {
-            loader.dataset.dismissed = 'true';
-            loader.style.opacity = '0';
-            loader.style.pointerEvents = 'none';
-            setTimeout(function() {
-              if (loader && loader.parentNode) {
-                loader.parentNode.removeChild(loader);
-              }
-            }, 300);
-          }
-        } catch (err) {
-          console.warn('Error dismissing loading screen:', err);
-        }
-      }
-      window.dismissLoadingScreen = dismissLoadingScreen;
-
-      // Automatically dismiss on DOMContentLoaded or window load
-      if (document.readyState === 'complete' || document.readyState === 'interactive') {
-        setTimeout(dismissLoadingScreen, 100);
-      } else {
-        document.addEventListener('DOMContentLoaded', function() {
-          setTimeout(dismissLoadingScreen, 100);
-        });
-        window.addEventListener('load', function() {
-          dismissLoadingScreen();
-        });
-      }
-
-      // Maximum loading timeout: ensure site can NEVER stay stuck on loading screen forever
-      var MAX_LOADING_TIMEOUT_MS = 1500;
-      setTimeout(function() {
-        dismissLoadingScreen();
-      }, MAX_LOADING_TIMEOUT_MS);
-    </script>
   </head>
-  <body class="bg-[#090d16] text-slate-100 min-h-screen selection:bg-emerald-500 selection:text-black">
-    <!-- Initial Loading Screen with Auto-Dismiss & Max Timeout -->
+  <body id="top">
+    <!-- Fail-safe Loading Screen: auto-dismisses on JS initialization -->
     <div id="loading-screen">
       <div class="initial-spinner" style="margin-bottom: 20px;"></div>
-      <h1 style="color: #f8fafc; font-size: 22px; font-weight: 700; margin: 0 0 8px 0; letter-spacing: 0.5px;">Akwasi Unblocked Games</h1>
-      <p style="font-size: 14px; margin: 0; color: #64748b;">Loading portal & games engine...</p>
+      <h1 style="color: #f8fafc; font-family: 'Chakra Petch', sans-serif; font-size: 24px; font-weight: 800; margin: 0 0 8px 0; letter-spacing: 0.5px;">
+        AKWASI UNBLOCKED GAMES
+      </h1>
+      <p style="font-size: 14px; margin: 0; color: #64748b;">Initializing galaxy portal & gaming catalog...</p>
       <noscript>
         <div style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 8px; padding: 12px 16px; margin-top: 20px; max-width: 380px;">
-          <p style="color: #fca5a5; font-size: 13px; margin: 0;">JavaScript is required to run Akwasi Unblocked Games. Please enable JavaScript in your browser settings.</p>
+          <p style="color: #fca5a5; font-size: 13px; margin: 0;">Please enable JavaScript to experience the full interactive games catalog.</p>
         </div>
       </noscript>
     </div>
 
-    <div id="root"></div>
-    <script type="module" src="./src/main.tsx"></script>
+    <!-- Galaxy Canvas Animation & CSS Fallback -->
+    <div class="galaxy-canvas-container">
+      <canvas id="galaxy-canvas"></canvas>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="app-container">
+      <!-- Top Sticky Navigation Bar -->
+      <header class="site-header">
+        <nav class="nav-bar">
+          <a href="#top" class="brand-link" title="Akwasi Unblocked Games Homepage">
+            <div class="brand-icon">
+              <svg viewBox="0 0 24 24">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+            <span>AKWASI <span class="brand-title-accent">GAMES</span></span>
+          </a>
+
+          <!-- Main Desktop Navigation Menu -->
+          <div class="nav-menu" id="desktop-menu">
+            <button class="nav-btn" data-nav-id="home" type="button">Home</button>
+            <button class="nav-btn" data-nav-id="youtube" type="button">
+              <img src="./assets/logos/youtube.svg" alt="" class="nav-mini-logo" />
+              YouTube
+            </button>
+            <button class="nav-btn" data-nav-id="tiktok" type="button">
+              <img src="./assets/logos/tiktok.svg" alt="" class="nav-mini-logo" />
+              TikTok
+            </button>
+            <button class="nav-btn" data-nav-id="snapchat" type="button">
+              <img src="./assets/logos/snapchat.svg" alt="" class="nav-mini-logo" />
+              Snapchat
+            </button>
+            <button class="nav-btn" data-nav-id="discord" type="button">
+              <img src="./assets/logos/discord.svg" alt="" class="nav-mini-logo" />
+              Discord
+            </button>
+            <button class="nav-btn" data-nav-id="roblox" type="button">
+              <img src="./assets/logos/roblox.svg" alt="" class="nav-mini-logo" />
+              Roblox
+            </button>
+            <button class="nav-btn" data-nav-id="google" type="button">
+              <img src="./assets/logos/google.svg" alt="" class="nav-mini-logo" />
+              Google
+            </button>
+            <button class="nav-btn nav-special-gaming" data-nav-id="gaming" type="button">
+              🎮 Gaming
+            </button>
+            <button class="nav-btn nav-special-unblocker" data-nav-id="unblocker" type="button">
+              🌐 UNBLOCKER
+            </button>
+          </div>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button class="mobile-toggle" id="mobile-menu-btn" aria-label="Toggle navigation menu" type="button">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </nav>
+
+        <!-- Mobile Drawer Menu -->
+        <div class="mobile-drawer" id="mobile-menu-drawer">
+          <button class="nav-btn" data-nav-id="home" type="button">Home</button>
+          <button class="nav-btn" data-nav-id="youtube" type="button">YouTube</button>
+          <button class="nav-btn" data-nav-id="tiktok" type="button">TikTok</button>
+          <button class="nav-btn" data-nav-id="snapchat" type="button">Snapchat</button>
+          <button class="nav-btn" data-nav-id="discord" type="button">Discord</button>
+          <button class="nav-btn" data-nav-id="roblox" type="button">Roblox</button>
+          <button class="nav-btn" data-nav-id="google" type="button">Google</button>
+          <button class="nav-btn nav-special-gaming" data-nav-id="gaming" type="button">🎮 Gaming Section</button>
+          <button class="nav-btn nav-special-unblocker" data-nav-id="unblocker" type="button">🌐 UNBLOCKER Portal</button>
+        </div>
+      </header>
+
+      <!-- Hero & Omnibar Search -->
+      <section class="hero-banner galaxy-glass">
+        <div class="hero-tag">
+          <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#06b6d4; box-shadow:0 0 8px #06b6d4;"></span>
+          FAST, CLEAN & UNRESTRICTED WEB PORTAL
+        </div>
+        <h1 class="hero-title">
+          WELCOME TO <span class="gradient-text">AKWASI UNBLOCKED GAMES</span>
+        </h1>
+        <p class="hero-desc">
+          High-speed galaxy portal featuring instant access to top online games, social web apps, sports simulators, and the direct UNBLOCKER web portal.
+        </p>
+
+        <!-- Omnibar Search Form -->
+        <div class="search-container">
+          <form id="search-form" class="search-box">
+            <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input
+              type="text"
+              id="search-input"
+              class="search-input"
+              placeholder="Search games, websites, or type a URL..."
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <button type="button" id="search-clear-btn" class="search-clear-btn" title="Clear search">✕</button>
+            <button type="submit" class="search-submit-btn">LAUNCH</button>
+          </form>
+
+          <!-- Category Filter Pills -->
+          <div class="category-bar">
+            <button class="cat-pill active" data-category="all" type="button">All Items</button>
+            <button class="cat-pill" data-category="games" type="button">🎮 Games</button>
+            <button class="cat-pill" data-category="social" type="button">💬 Social & Media</button>
+            <button class="cat-pill" data-category="utility" type="button">🔍 Web Search</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- UNBLOCKER Section (Fast Web Search & Direct URL Portal) -->
+      <section id="unblocker-portal" class="unblocker-banner galaxy-glass">
+        <span class="section-tag tag-unblocker">NORMAL WEB PORTAL</span>
+        <h2 class="section-title">UNBLOCKER</h2>
+        <p class="section-subtitle">
+          Direct search and web portal launcher. Enter any website URL or search term to navigate directly and browse openly.
+        </p>
+        <form id="unblocker-portal-form" class="portal-form-row">
+          <div class="portal-input-wrap">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <input
+              type="text"
+              id="portal-url-input"
+              class="portal-input"
+              placeholder="https://example.com or enter search term..."
+              autocomplete="off"
+              spellcheck="false"
+            />
+          </div>
+          <button type="submit" class="portal-submit-btn">
+            EXPLORE IN PORTAL
+          </button>
+        </form>
+
+        <div class="quick-chips-row">
+          <span class="quick-chip-label">QUICK DESTINATIONS:</span>
+          <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="quick-chip">Google</a>
+          <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="quick-chip">YouTube</a>
+          <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="quick-chip">Discord</a>
+          <a href="https://www.roblox.com" target="_blank" rel="noopener noreferrer" class="quick-chip">Roblox</a>
+          <a href="https://poki.com" target="_blank" rel="noopener noreferrer" class="quick-chip">Poki</a>
+          <a href="https://soccerbros.com" target="_blank" rel="noopener noreferrer" class="quick-chip">Soccer Bros</a>
+        </div>
+      </section>
+
+      <!-- Gaming Section (6 Featured Hits with Real Logos & Play Links) -->
+      <section id="gaming-section" class="gaming-section">
+        <div class="gaming-section-header">
+          <span class="section-tag tag-gaming">OFFICIAL RELEASES</span>
+          <h2 class="section-title">FEATURED GAMING SITES</h2>
+          <p class="section-subtitle">
+            Direct access to Poki, Soccer Bros, Football Bros, Wrestle Bros, 2v2.io, and OZ Games with official branding and zero proxy lag.
+          </p>
+        </div>
+
+        <!-- Rendered dynamically by gaming.js -->
+        <div id="gaming-grid" class="gaming-grid"></div>
+      </section>
+
+      <!-- Websites & Popular Catalog Grid -->
+      <section class="websites-section">
+        <div class="gaming-section-header">
+          <span class="section-tag tag-gaming">WEB & CATALOG</span>
+          <h2 class="section-title">ALL SITES & GAMES</h2>
+          <p class="section-subtitle">
+            Curated list of social platforms, game hits, and streaming channels.
+          </p>
+        </div>
+
+        <!-- Rendered dynamically by websites.js -->
+        <div id="websites-grid" class="websites-grid"></div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="footer-links">
+          <a href="#top" class="footer-link">Back to Top</a>
+          <a href="#gaming-section" class="footer-link">Gaming Section</a>
+          <a href="#unblocker-portal" class="footer-link">UNBLOCKER Portal</a>
+          <a href="https://poki.com" target="_blank" rel="noopener noreferrer" class="footer-link">Poki</a>
+          <a href="https://soccerbros.com" target="_blank" rel="noopener noreferrer" class="footer-link">Soccer Bros</a>
+          <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="footer-link">YouTube</a>
+        </div>
+        <p>© Akwasi Unblocked Games. Clean, fast, and responsive web portal experience.</p>
+      </footer>
+    </div>
+
+    <!-- Single Clear Module Entry Point -->
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>
-

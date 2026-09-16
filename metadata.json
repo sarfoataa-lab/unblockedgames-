@@ -1,6 +1,8 @@
 {
   "name": "Akwasi Unblocked Games",
-  "description": "Simple, fast, and dark web portal and games hub featuring quick access to YouTube, TikTok, Snapchat, Discord, Roblox, Google search, custom shortcuts, and games.",
+  "description": "Akwasi Unblocked Games - Fast galaxy portal and web games hub featuring YouTube, TikTok, Snapchat, Discord, Roblox, Google, Poki, Soccer Bros, Football Bros, Wrestle Bros, 2v2.io, OZ Games, and UNBLOCKER search portal.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
