@@ -9,12 +9,25 @@
     <meta property="og:description" content="Simple, fast, and dark web portal and games hub featuring quick access to YouTube, TikTok, Snapchat, Discord, Roblox, Google search, custom shortcuts, and games." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="shortcut icon" href="./favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      @keyframes spinLoader {
+        to { transform: rotate(360deg); }
+      }
+      .initial-spinner {
+        width: 44px;
+        height: 44px;
+        border: 3px solid rgba(6, 182, 212, 0.2);
+        border-top-color: #06b6d4;
+        border-radius: 50%;
+        animation: spinLoader 0.9s linear infinite;
+      }
+    </style>
     <script>
       // Isolate any third-party browser extension errors (e.g. injected content.js or chrome-extension:// scripts)
       window.addEventListener('error', function(e) {
@@ -35,8 +48,19 @@
     </script>
   </head>
   <body class="bg-[#090d16] text-slate-100 min-h-screen selection:bg-emerald-500 selection:text-black">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div id="root">
+      <div style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: #090d16; color: #94a3b8; font-family: system-ui, -apple-system, sans-serif; text-align: center; padding: 24px;">
+        <div class="initial-spinner" style="margin-bottom: 20px;"></div>
+        <h1 style="color: #f8fafc; font-size: 22px; font-weight: 700; margin: 0 0 8px 0; letter-spacing: 0.5px;">Akwasi Unblocked Games</h1>
+        <p style="font-size: 14px; margin: 0; color: #64748b;">Loading portal & games engine...</p>
+        <noscript>
+          <div style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 8px; padding: 12px 16px; margin-top: 20px; max-width: 380px;">
+            <p style="color: #fca5a5; font-size: 13px; margin: 0;">JavaScript is required to run Akwasi Unblocked Games. Please enable JavaScript in your browser settings.</p>
+          </div>
+        </noscript>
+      </div>
+    </div>
+    <script type="module" src="./src/main.tsx"></script>
   </body>
 </html>
 
