@@ -81,7 +81,7 @@ export const WebSection: React.FC<WebSectionProps> = ({
     setRecentSearches(getRecentSearches());
   }, []);
 
-  const activeTab = tabs.find(t => t.id === activeTabId) || tabs[0];
+  const activeTab = tabs.find(t => t.id === activeTabId) || tabs[0] || INITIAL_TABS[0];
 
   // Notify parent of active URL changes
   useEffect(() => {
@@ -90,12 +90,21 @@ export const WebSection: React.FC<WebSectionProps> = ({
     }
   }, [activeTab.url, onUrlChange]);
 
-  // Handle incoming site clicks from Navbar menu
-  useEffect(() => {
-    if (incomingSite && incomingSite.url) {
-      handleNavigateTo(incomingSite.url, incomingSite.name);
-    }
-  }, [incomingSite]);
+  const handleGoHome = () => {
+    sound.playClick();
+    setTabs(prev => prev.map(tab => {
+      if (tab.id === activeTabId) {
+        return {
+          ...tab,
+          url: '',
+          title: 'Portal Home & Search',
+          isHome: true
+        };
+      }
+      return tab;
+    }));
+    setUrlInput('');
+  };
 
   const handleNavigateTo = (targetUrl: string, titleName?: string) => {
     sound.playClick();
@@ -123,6 +132,17 @@ export const WebSection: React.FC<WebSectionProps> = ({
     setUrlInput(finalUrl);
     setIframeKey(k => k + 1);
   };
+
+  // Handle incoming site clicks from Navbar menu
+  useEffect(() => {
+    if (incomingSite) {
+      if (incomingSite.url) {
+        handleNavigateTo(incomingSite.url, incomingSite.name);
+      } else {
+        handleGoHome();
+      }
+    }
+  }, [incomingSite]);
 
   const handleOmniboxSubmit = (e: React.FormEvent, forceGoogleSearch = false) => {
     e.preventDefault();
@@ -196,22 +216,6 @@ export const WebSection: React.FC<WebSectionProps> = ({
     }
   };
 
-  const handleGoHome = () => {
-    sound.playClick();
-    setTabs(prev => prev.map(tab => {
-      if (tab.id === activeTabId) {
-        return {
-          ...tab,
-          url: '',
-          title: 'Portal Home & Search',
-          isHome: true
-        };
-      }
-      return tab;
-    }));
-    setUrlInput('');
-  };
-
   const handleRefresh = () => {
     sound.playClick();
     setIframeKey(k => k + 1);
@@ -219,9 +223,16 @@ export const WebSection: React.FC<WebSectionProps> = ({
 
   const handleCopyUrl = () => {
     const toCopy = activeTab.url || window.location.href;
-    navigator.clipboard.writeText(toCopy);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    if (navigator?.clipboard?.writeText) {
+      navigator.clipboard.writeText(toCopy)
+        .then(() => {
+          setCopied(true);
+          setTimeout(() => setCopied(false), 2000);
+        })
+        .catch(() => {
+          // Fallback if clipboard permission denied
+        });
+    }
   };
 
   const handleAddBookmarkSubmit = (e: React.FormEvent) => {

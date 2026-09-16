@@ -73,10 +73,13 @@ export function resolveWebTarget(input) {
  * @param {boolean} newWindow
  */
 export function launchWebDestination(url, newWindow = true) {
-  if (!url) return;
+  if (!url || typeof window === 'undefined') return;
   const targetUrl = /^https?:\/\//i.test(url) ? url : `https://${url}`;
   if (newWindow) {
-    window.open(targetUrl, '_blank', 'noopener,noreferrer');
+    const win = window.open(targetUrl, '_blank', 'noopener,noreferrer');
+    if (!win) {
+      window.location.href = targetUrl;
+    }
   } else {
     window.location.href = targetUrl;
   }

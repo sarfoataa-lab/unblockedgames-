@@ -59,17 +59,23 @@ export const GamePlayer: React.FC<GamePlayerProps> = ({
         console.warn('Fullscreen error:', err);
       });
     } else {
-      document.exitFullscreen();
+      if (document.exitFullscreen) {
+        document.exitFullscreen().catch(() => {});
+      }
     }
   };
 
   const handleShare = () => {
     sound.playClick();
     const url = window.location.href;
-    navigator.clipboard?.writeText(url).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
+    if (navigator?.clipboard?.writeText) {
+      navigator.clipboard.writeText(url)
+        .then(() => {
+          setCopied(true);
+          setTimeout(() => setCopied(false), 2000);
+        })
+        .catch(() => {});
+    }
   };
 
   // Render the matching game component

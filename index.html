@@ -9,9 +9,30 @@
     <meta property="og:description" content="Simple, fast, and dark web portal and games hub featuring quick access to YouTube, TikTok, Snapchat, Discord, Roblox, Google search, custom shortcuts, and games." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      // Isolate any third-party browser extension errors (e.g. injected content.js or chrome-extension:// scripts)
+      window.addEventListener('error', function(e) {
+        var fn = (e && e.filename) || '';
+        var msg = (e && e.message) || '';
+        if (
+          fn.indexOf('chrome-extension://') !== -1 ||
+          fn.indexOf('moz-extension://') !== -1 ||
+          fn.indexOf('content.js') !== -1 ||
+          fn.indexOf('popup.js') !== -1 ||
+          (msg.indexOf('Cannot set properties of null') !== -1 && fn.indexOf('extension') !== -1)
+        ) {
+          e.preventDefault && e.preventDefault();
+          e.stopPropagation && e.stopPropagation();
+          return true;
+        }
+      }, true);
+    </script>
   </head>
   <body class="bg-[#090d16] text-slate-100 min-h-screen selection:bg-emerald-500 selection:text-black">
     <div id="root"></div>
